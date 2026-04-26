@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document Search Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="header">
+    <h1>🔎 Document Search Engine</h1>
+    <p>TF, IDF, TF‑IDF, BM25 & Boolean Models</p>
+
+    <form method="POST" class="search-box">
+        <input type="text" name="query" placeholder="Enter query..." required>
+        <button type="submit">Search</button>
+    </form>
+
+    <p style="font-size:13px">
+        Boolean examples:
+        <b>indexation AND retrieval</b> |
+        <b>bm25 OR tfidf</b> |
+        <b>indexation NOT model</b>
+    </p>
+</div>
+
+<div class="container">
+
+{% if results %}
+<h2>Results</h2>
+
+{% for r in results %}
+<div class="result">
+    <strong>
+        {{ r.title }} ({{ r.word_count }} words)
+    </strong>
+
+    <div class="snippet" data-snippet>
+        {{ r.snippet }}
+    </div>
+
+    <div class="badges">
+        <span class="badge bm25">BM25: {{ r.bm25 }}</span>
+        <span class="badge boolean">Boolean: {{ r.boolean }}</span>
+    </div>
+
+    <details>
+        <summary>📊 TF‑IDF per term</summary>
+        <table class="tfidf-table">
+            <tr><th>Term</th><th>TF</th><th>IDF</th><th>TF‑IDF</th></tr>
+            {% for t in r.tfidf_terms %}
+            <tr>
+                <td>{{ t.term }}</td>
+                <td>{{ t.tf }}</td>
+                <td>{{ t.idf }}</td>
+                <td>{{ t.tfidf }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </details>
+
+    <details>
+        <summary>📐 BM25 components</summary>
+        <p>
+            dl = {{ r.bm25_components.dl }}<br>
+            avgdl = {{ r.bm25_components.avgdl }}<br>
+            BM25 = {{ r.bm25 }}
+        </p>
+    </details>
+</div>
+{% endfor %}
+
+{% elif query %}
+<div class="no-results-box">
+    No results found for "{{ query }}"
+</div>
+{% endif %}
+
+</div>
+
+<footer>
+    Mini‑Project — Information Retrieval & Indexation<br>
+    Flask · Whoosh
+</footer>
+
+<script>
+(function () {
+    const query = "{{ query }}".toLowerCase();
+    const ops = ["and","or","not"];
+    const terms = query.split(/\s+/).filter(t => t && !ops.includes(t));
+    if (!terms.length) return;
+
+    const regex = new RegExp("(" + terms.join("|") + ")", "gi");
+
+    document.querySelectorAll("[data-snippet]").forEach(el => {
+        el.innerHTML = el.textContent.replace(regex, "<span class='highlight'>$1</span>");
+    });
+})();
+</script>
+
+</body>
+</html>

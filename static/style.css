@@ -1,0 +1,117 @@
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER */
+.header {
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    padding: 35px 20px;
+    text-align: center;
+}
+
+.search-box {
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search-box input {
+    width: 330px;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+}
+
+.search-box button {
+    padding: 12px 18px;
+    border-radius: 6px;
+    background: #1abc9c;
+    color: white;
+    border: none;
+}
+
+/* RESULTS */
+.container {
+    padding: 35px 40px;
+}
+
+.result {
+    background: white;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-left: 5px solid #3498db;
+    border-radius: 4px;
+}
+
+.snippet {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.highlight {
+    background: #fff3a0;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-weight: 600;
+}
+
+/* BADGES */
+.badges {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    color: white;
+}
+
+.tf { background: #2980b9; }
+.idf { background: #8e44ad; }
+.tfidf { background: #3498db; }
+.bm25 { background: #9b59b6; }
+.boolean { background: #27ae60; }
+
+/* DETAILS */
+details {
+    margin-top: 10px;
+    background: #f9fafb;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.tfidf-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+}
+
+.tfidf-table th,
+.tfidf-table td {
+    border: 1px solid #ddd;
+    padding: 6px;
+    text-align: center;
+}
+
+/* NO RESULTS */
+.no-results-box {
+    background: white;
+    border-left: 6px solid #e74c3c;
+    padding: 18px;
+}
+
+/* FOOTER */
+footer {
+    padding: 16px;
+    text-align: center;
+    background: #eaeaea;
+    color: #777;
+}

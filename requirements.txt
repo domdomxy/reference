@@ -1,0 +1,4 @@
+flask
+whoosh
+PyPDF2
+python-docx

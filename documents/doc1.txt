@@ -1,0 +1,22 @@
+Information Retrieval (IR) is a field concerned with the representation, storage, organization,
+and access to information items. The goal of information retrieval systems is to provide users
+with accurate and relevant documents in response to their queries.
+
+Indexation plays a fundamental role in information retrieval. It consists of analyzing documents
+and extracting meaningful terms that can later be used during search. Modern search engines rely
+heavily on inverted indexes to ensure fast query evaluation.
+
+Several retrieval models exist. The Boolean model relies on logical operators such as AND, OR, and
+NOT to determine whether a document satisfies a query. While simple, this model does not provide
+a ranking mechanism.
+
+The Vector Space Model represents documents and queries as vectors. Each term is assigned a weight
+using techniques such as TF, IDF, and TF-IDF. This allows documents to be ranked according to their
+relevance.
+
+BM25 is a probabilistic retrieval model that improves upon TF-IDF by considering document length
+normalization and term saturation. It is widely used in modern search engines.
+
+Information retrieval systems are used in many domains including search engines, digital libraries,
+recommendation systems, and question-answering systems. As data volumes grow, efficient indexing
+and retrieval techniques become increasingly important.

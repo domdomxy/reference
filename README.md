@@ -1,5 +1,5 @@
 #Use this code as a reference.
-<<<<<<< HEAD
+
 
 First run 'pip install -r requirements.txt' in the terminal, to download the needed repertoires.
 
